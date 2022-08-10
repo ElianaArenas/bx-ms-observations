@@ -9,13 +9,13 @@ export class ObservationRepository implements IObservationRepository {
     private readonly _observationModel: Model<ObservationDocument>,
   ) {}
 
-  // async create(observation: Observation) {
-  //   try {
-  //     return await this._observationModel.create(observation);
-  //   } catch (error) {
-  //     throw new Error(error.message);
-  //   }
-  // }
+  async create(observation: Observation) {
+    try {
+      return await this._observationModel.create(observation);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 
   async getAll() {
     try {
@@ -33,21 +33,11 @@ export class ObservationRepository implements IObservationRepository {
     }
   }
 
-  // async update() {
-  //   try {
-  //     const observation = await this._observationModel.updateOne();
-  //     return !observation;
-  //   } catch (error) {
-  //     throw new Error(error.message);
-  //   }
-  // }
-
-  // async delete() {
-  //   try {
-  //     const observation = await this._observationModel.deleteOne().exec();
-  //     return !observation;
-  //   } catch (error) {
-  //     throw new Error(error.message);
-  //   }
-  // }
+  async getByCodes(codes: string[]) {
+    try {
+      return await this._observationModel.find({ code: { $in: codes } }).exec();
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 }

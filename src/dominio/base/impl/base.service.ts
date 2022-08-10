@@ -4,6 +4,10 @@ import { IDomainService } from '../base.service';
 export class DomainService<T, U> implements IDomainService<T, U> {
   constructor(private readonly _baseRepo: IRepository<T, U>) {}
 
+  async create(domain: T): Promise<T> {
+    return await this._baseRepo.create(domain);
+  }
+
   async getAll(): Promise<T[]> {
     return await this._baseRepo.getAll();
   }
