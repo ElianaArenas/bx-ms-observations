@@ -12,6 +12,8 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
 
+  console.log(process.env.NODE_ENV);
+
   app.setGlobalPrefix(process.env.API_PREFIX || API_DEFAULT_PREFIX);
 
   //Middlewares
