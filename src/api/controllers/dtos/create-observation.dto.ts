@@ -1,7 +1,9 @@
 import { IsArray, IsString } from 'class-validator';
 
-export class GetObservationDto {
+export class CreateObservationDto {
+  @IsString()
+  code: string;
   @IsArray()
   @IsString({ each: true })
-  evExCodes: string[];
+  observations: string[];
 }

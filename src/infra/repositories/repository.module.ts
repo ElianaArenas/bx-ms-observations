@@ -13,7 +13,14 @@ const providers: Provider[] = [
   imports: [
     MongooseModule.forRootAsync({
       useFactory: async () => ({
-        uri: 'mongodb+srv://admin:admin12345@cluster0.ysc6i.mongodb.net/pruebas-eliana?retryWrites=true&w=majority',
+        uri:
+          process.env.MONGO_SERVER ||
+          'mongodb+srv://cluster0.ysc6i.mongodb.net/pruebas-eliana?retryWrites=true&w=majority',
+        auth: {
+          username: process.env.MONGO_USER || 'admin',
+          password: process.env.MONGO_PASSWORD || 'admin12345',
+        },
+        dbName: process.env.MONGO_DB_NAME || 'pruebas-eliana',
       }),
     }),
     MongooseModule.forFeature([
