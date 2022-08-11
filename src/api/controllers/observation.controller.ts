@@ -38,7 +38,7 @@ export class ObservationController {
   @ApiBadRequestResponse({
     description: 'Bad Request',
   })
-  async create(@Body() body: CreateObservationDto) {
+  async create(@Body() body: CreateObservationDto): Promise<Observation> {
     const observations = await this._observationService.create(body);
     return observations;
   }
@@ -60,7 +60,7 @@ export class ObservationController {
       new ParseArrayPipe({ items: String, separator: ',' }),
     )
     eventsExceptions: string[],
-  ) {
+  ): Promise<Observation[]> {
     const observations = await this._observationService.getByEventException(
       eventsExceptions,
     );
