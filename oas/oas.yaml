@@ -1,0 +1,54 @@
+openapi: 3.0.0
+paths:
+  /api/digitacion/v1/observation:
+    post:
+      operationId: ObservationController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateObservationDto"
+      responses:
+        "201":
+          description: ""
+  /api/digitacion/v1/observation/evEx:
+    post:
+      operationId: ObservationController_getObservations
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GetObservationDto"
+      responses:
+        "201":
+          description: ""
+info:
+  title: Digitación Hub Mobile
+  description: Backend microservice to get predefined observations
+  version: "1.0"
+  contact: {}
+  license:
+    name: Blue Express
+    url: https://www.blue.cl
+tags: []
+servers:
+  - url: http://localhost:3000
+    description: Local Environment
+  - url: https://devapigw.bluex.cl
+    description: Develop Environment
+  - url: https://qaapigw.bluex.cl
+    description: QA - Environment
+  - url: https://apigw.bluex.cl
+    description: Production Environment
+components:
+  schemas:
+    CreateObservationDto:
+      type: object
+      properties: {}
+    GetObservationDto:
+      type: object
+      properties: {}
