@@ -3,8 +3,8 @@ import { Document } from 'mongoose';
 
 @Schema({ versionKey: false })
 export class Observation {
-  @Prop({ type: String, required: true })
-  code: string;
+  @Prop({ type: String, unique: true, required: true })
+  eventException: string;
 
   @Prop({ type: Array<String>, required: true })
   observations: string[];

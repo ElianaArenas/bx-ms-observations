@@ -7,8 +7,8 @@ import * as YAML from 'yaml';
 import * as fs from 'fs';
 import { AppModule } from './app.module';
 
-const API_DEFAULT_PORT = 3000;
-const API_DEFAULT_PREFIX = '/api/digitacion/v1/';
+const API_DEFAULT_PORT = 3001;
+const API_DEFAULT_PREFIX = '/api/digitacion/v1/observations';
 
 /**
  * The defaults below are dedicated to Swagger configuration
@@ -50,6 +50,12 @@ async function bootstrap() {
   //Middlewares
   app.use(json());
   app.use(helmet());
+
+  app.enableCors({
+    allowedHeaders: ['content-type', 'apikey'],
+    origin: '*',
+    credentials: true,
+  });
 
   await app.listen(process.env.API_PORT || API_DEFAULT_PORT);
 }

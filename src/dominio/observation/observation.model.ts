@@ -1,9 +1,9 @@
 export class Observation {
-  code: string;
+  eventException: string;
   observations: string[];
 
-  constructor(code: string, observations: string[]) {
-    this.code = code;
+  constructor(eventException: string, observations: string[]) {
+    this.eventException = eventException;
     this.observations = observations;
   }
 }

@@ -15,7 +15,7 @@ const providers: Provider[] = [
       useFactory: async () => ({
         uri:
           process.env.MONGO_SERVER ||
-          'mongodb+srv://cluster0.ysc6i.mongodb.net/pruebas-eliana?retryWrites=true&w=majority',
+          'mongodb+srv://cluster0.ysc6i.mongodb.net/retryWrites=true&w=majority',
         auth: {
           username: process.env.MONGO_USER || 'admin',
           password: process.env.MONGO_PASSWORD || 'admin12345',

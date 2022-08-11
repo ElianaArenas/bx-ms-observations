@@ -1,1 +1,1 @@
-export * from './get-observations.dto';
+export * from './create-observation.dto';

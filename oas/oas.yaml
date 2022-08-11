@@ -1,8 +1,9 @@
 openapi: 3.0.0
 paths:
-  /api/digitacion/v1/observation:
+  /api/digitacion/v1/observations:
     post:
       operationId: ObservationController_create
+      summary: Create observations for events/exceptions
       parameters: []
       requestBody:
         required: true
@@ -12,20 +13,33 @@ paths:
               $ref: "#/components/schemas/CreateObservationDto"
       responses:
         "201":
-          description: ""
-  /api/digitacion/v1/observation/evEx:
-    post:
+          description: The observation has been successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Observation"
+        "400":
+          description: Bad Request
+      tags:
+        &a1
+        - Observations
+    get:
       operationId: ObservationController_getObservations
-      parameters: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/GetObservationDto"
+      summary: Get observations by an array of events/exceptions codes
+      parameters:
+        - name: eventsExceptions
+          required: true
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
       responses:
-        "201":
-          description: ""
+        "200":
+          description: Successfully received observations
+        "400":
+          description: Bad Request
+      tags: *a1
 info:
   title: Digitación Hub Mobile
   description: Backend microservice to get predefined observations
@@ -36,7 +50,7 @@ info:
     url: https://www.blue.cl
 tags: []
 servers:
-  - url: http://localhost:3000
+  - url: http://localhost:3001
     description: Local Environment
   - url: https://devapigw.bluex.cl
     description: Develop Environment
@@ -48,7 +62,21 @@ components:
   schemas:
     CreateObservationDto:
       type: object
-      properties: {}
-    GetObservationDto:
+      properties:
+        eventException:
+          type: string
+          description: Provide event exception code
+          example: AC
+        observations:
+          description: Provide observations
+          example:
+            - observation 1
+          type: array
+          items:
+            type: string
+      required:
+        - eventException
+        - observations
+    Observation:
       type: object
       properties: {}

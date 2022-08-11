@@ -33,9 +33,11 @@ export class ObservationRepository implements IObservationRepository {
     }
   }
 
-  async getByCodes(codes: string[]) {
+  async getByEventException(eventsExceptions: string[]) {
     try {
-      return await this._observationModel.find({ code: { $in: codes } }).exec();
+      return await this._observationModel
+        .find({ eventException: { $in: eventsExceptions } })
+        .exec();
     } catch (error) {
       throw new Error(error.message);
     }

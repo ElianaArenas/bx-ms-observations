@@ -10,7 +10,7 @@ export class ObservationDomainService
     super(_observationRepository);
   }
 
-  getByCodes(codes: string[]): Promise<Observation[]> {
-    return this._observationRepository.getByCodes(codes);
+  getByEventException(eventsExceptions: string[]): Promise<Observation[]> {
+    return this._observationRepository.getByEventException(eventsExceptions);
   }
 }
