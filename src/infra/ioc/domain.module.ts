@@ -1,7 +1,7 @@
 import { Module, Provider } from '@nestjs/common';
 import { RepositoryModule } from '../repositories/repository.module';
-import { ObservationDomainService } from '../../dominio/observation/impl/observation.service';
-import { IObservationRepository } from 'src/dominio/observation/observation.repository';
+import { ObservationDomainService } from '../../domain/observation/impl/observation.service';
+import { IObservationRepository } from 'src/domain/observation/observation.repository';
 
 const domainProviders: Provider[] = [
   {

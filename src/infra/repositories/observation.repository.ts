@@ -1,6 +1,6 @@
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { IObservationRepository } from 'src/dominio/observation/observation.repository';
+import { IObservationRepository } from 'src/domain/observation/observation.repository';
 import { Observation, ObservationDocument } from './schemas';
 
 export class ObservationRepository implements IObservationRepository {
