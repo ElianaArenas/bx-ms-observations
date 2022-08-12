@@ -14,8 +14,8 @@ import {
   ApiBadRequestResponse,
   ApiOkResponse,
 } from '@nestjs/swagger';
-import { Observation } from 'src/domain/observation/observation.model';
-import { IObservationDomainService } from 'src/domain/observation/observation.service';
+import { Observation } from '../../domain/observation/observation.model';
+import { IObservationDomainService } from '../../domain/observation/observation.service';
 import { CreateObservationDto } from './dtos';
 
 @Controller()
